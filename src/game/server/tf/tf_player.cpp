@@ -56,6 +56,8 @@
 #include "tf_weapon_flamethrower.h"
 #include "tf_weapon_lunchbox.h"
 #include "tf_weapon_laser_pointer.h"
+#include "info_camera_link.h"
+#include "point_camera.h"
 
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
@@ -4174,6 +4176,17 @@ bool CTFPlayer::IsPlayerClass( int iClass ) const
 		return false;
 
 	return ( pClass->IsClass( iClass ) );
+}
+
+//-----------------------------------------------------------------------------
+// Purpose: 
+//-----------------------------------------------------------------------------
+void CTFPlayer::SetupVisibility( CBaseEntity *pViewEntity, unsigned char *pvs, int pvssize )
+{
+	BaseClass::SetupVisibility( pViewEntity, pvs, pvssize );
+
+	int area = pViewEntity ? pViewEntity->NetworkProp()->AreaNum() : NetworkProp()->AreaNum();
+	PointCameraSetupVisibility( this, area, pvs, pvssize );
 }
 
 //-----------------------------------------------------------------------------
