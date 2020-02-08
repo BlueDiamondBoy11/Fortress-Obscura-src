@@ -6,17 +6,10 @@
 
 $Macro OUTBINNAME	"client"
 $Macro OUTBINDIR	"$SRCDIR\..\game\$GAMENAME\bin"
-$Macro DEVKITBINDIR	"$GAMENAME\bin"							[$X360]
-// It's important to include $GAMENAME in the generated_proto directory
-// to avoid race conditions when multiple games are in one solution.
-$Macro GENERATED_PROTO_DIR	"$SRCDIR\game\client\generated_proto_$GAMENAME"
 
 $MacroRequired "GAMENAME"
 
 $Include "$SRCDIR\vpc_scripts\source_dll_base.vpc"
-$include "$SRCDIR\vpc_scripts\protobuf_builder.vpc"
-$Include "$SRCDIR\vpc_scripts\source_replay.vpc"	[$TF]
-$Include "$SRCDIR\game\protobuf_include.vpc"
 
 $Configuration	"Debug"
 {
@@ -172,7 +165,7 @@ $Project
 		
 	$Folder	"Source Files"
 	{
-		$File	"hl2\C_Func_Monitor.cpp"
+		$File	"C_Func_Monitor.cpp"
 		$File	"geiger.cpp"
 		$File	"history_resource.cpp"
 		$File	"hud_weapon.cpp"
@@ -183,7 +176,6 @@ $Project
 		$File	"$SRCDIR\game\shared\achievementmgr.cpp"
 		$File	"$SRCDIR\game\shared\achievementmgr.h"
 		$File   "$SRCDIR\game\shared\achievements_and_stats_interface.h"
-		$File	"$SRCDIR\game\shared\achievements_hlx.cpp"
 		$File	"achievement_notification_panel.cpp"
 		$File	"achievement_notification_panel.h"
 		$File	"$SRCDIR\game\shared\activitylist.cpp"
@@ -279,10 +271,8 @@ $Project
 		$File	"c_test_proxytoggle.cpp"
 		$File	"c_user_message_register.cpp"
 		$File	"c_vehicle_choreo_generic.cpp"
-		$File	"c_vehicle_jeep.cpp"
 		$File	"c_vguiscreen.cpp"
-		$File	"hl2\c_waterbullet.cpp"
-		$File	"hl2\hud_autoaim.cpp"
+		$File	"c_waterbullet.cpp"
 		$File	"C_WaterLODControl.cpp"
 		$File	"c_world.cpp"
 		$File	"$SRCDIR\game\shared\cam_thirdperson.cpp"
@@ -360,8 +350,6 @@ $Project
 		$File	"hud_closecaption.cpp"
 		$File	"hud_crosshair.cpp"
 		$File	"hud_element_helper.cpp"
-		$File	"hl2\hud_filmdemo.cpp"
-		$File	"hl2\hud_hdrdemo.cpp"
 		$File	"hud_hintdisplay.cpp"
 		$File	"hud_msg.cpp"
 		$File	"hud_numericdisplay.cpp"
@@ -722,7 +710,6 @@ $Project
 		$File	"c_team.h"
 		$File	"c_tesla.h"
 		$File	"c_tracer.h"
-		$File	"c_vehicle_jeep.h"
 		$File	"c_user_message_register.h"
 		$File	"c_vguiscreen.h"
 		$File	"c_weapon__stubs.h"
@@ -1114,7 +1101,6 @@ $Project
 		$File	"$SRCDIR\game\shared\base_playeranimstate.h"
 		$File	"$SRCDIR\game\shared\baseentity_shared.h"
 		$File	"$SRCDIR\game\shared\basegrenade_shared.h"
-		$File	"$SRCDIR\game\shared\hl2\basehlcombatweapon_shared.h"
 		$File	"$SRCDIR\game\shared\baseparticleentity.h"
 		$File	"$SRCDIR\game\shared\baseplayer_shared.h"
 		$File	"$SRCDIR\game\shared\baseviewmodel_shared.h"
@@ -1146,8 +1132,6 @@ $Project
 		$File	"$SRCDIR\game\shared\gamestringpool.h"
 		$File	"$SRCDIR\game\shared\gamevars_shared.h"
 		$File	"$SRCDIR\game\shared\groundlink.h"
-		$File	"$SRCDIR\game\shared\hl2\hl2_player_shared.h"
-		$File	"$SRCDIR\game\shared\hl2\hl_movedata.h"
 		$File	"$SRCDIR\game\shared\ichoreoeventcallback.h"
 		$File	"$SRCDIR\game\shared\IEffects.h"
 		$File	"$SRCDIR\game\shared\igamemovement.h"

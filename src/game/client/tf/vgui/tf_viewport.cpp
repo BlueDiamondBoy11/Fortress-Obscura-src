@@ -48,34 +48,6 @@
 #include "tf_mapinfomenu.h"
 #include "tf_roundinfo.h"
 
-#include "tf_overview.h"
-
-/*
-CON_COMMAND( spec_help, "Show spectator help screen")
-{
-	if ( gViewPortInterface )
-		gViewPortInterface->ShowPanel( PANEL_INFO, true );
-}
-
-CON_COMMAND( spec_menu, "Activates spectator menu")
-{
-	bool bShowIt = true;
-
-	C_CSPlayer *pPlayer = C_CSPlayer::GetLocalCSPlayer();
-
-	if ( pPlayer && !pPlayer->IsObserver() )
-		return;
-
-	if ( args.ArgC() == 2 )
-	{
-		bShowIt = atoi( args[ 1 ] ) == 1;
-	}
-
-	if ( gViewPortInterface )
-		gViewPortInterface->ShowPanel( PANEL_SPECMENU, bShowIt );
-}
-*/
-
 CON_COMMAND( showmapinfo, "Show map info panel" )
 {
 	if ( !gViewPortInterface )
@@ -207,7 +179,6 @@ IViewPortPanel* TFViewport::CreatePanelByName(const char *szPanelName)
 	IViewPortPanel* newpanel = NULL;
 
 	// overwrite MOD specific panel creation
-
 	if ( Q_strcmp( PANEL_SCOREBOARD, szPanelName ) == 0 )
 	{
 		newpanel = new CTFClientScoreBoardDialog( this );
@@ -219,10 +190,6 @@ IViewPortPanel* TFViewport::CreatePanelByName(const char *szPanelName)
 	else if ( Q_strcmp( PANEL_SPECMENU, szPanelName ) == 0 )
 	{
 //		newpanel = new CTFSpectatorGUI( this );	
-	}
-	else if ( Q_strcmp( PANEL_OVERVIEW, szPanelName ) == 0 )
-	{
-//		newpanel = new CTFMapOverview( this );
 	}
 	else if ( Q_strcmp( PANEL_INFO, szPanelName ) == 0 )
 	{

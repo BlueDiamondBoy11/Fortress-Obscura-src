@@ -117,8 +117,6 @@ $Project "Client (TF)"
 			$File	"tf\c_tf_team.h"
 			$File	"tf\c_tf_weapon_builder.cpp"
 			$File	"tf\c_tf_weapon_builder.h"
-			$File	"tf\c_tf_vehicle_jeep.cpp"
-			$File	"tf\c_tf_vehicle_jeep.h"
 			$File	"tf\clientmode_tf.cpp"
 			$File	"tf\clientmode_tf.h"
 			$File	"tf\econ_notifications.cpp"
@@ -199,11 +197,6 @@ $Project "Client (TF)"
 			$File	"tf\c_tf_viewmodeladdon.cpp"
 			$File	"tf\c_tf_viewmodeladdon.h"
 			
-			$Folder	"Unused"
-			{
-				$File	"tf\tf_hud_health.cpp"
-			}			
-			
 			$Folder	"vgui"
 			{
 				$Folder	"Controls"
@@ -278,11 +271,6 @@ $Project "Client (TF)"
 					$File	"tf\vgui\panels\tf_statsummarydialog.h"
 				}	
 				
-				$Folder	"Unused"
-				{
-					$File	"tf\vgui\tf_overview.cpp"
-					$File	"tf\vgui\tf_overview.h"	
-				}	
 				$File	"tf\vgui\backgroundpanel.cpp"
 				$File	"tf\vgui\backgroundpanel.h"
 				$File	"tf\vgui\ObjectControlPanel.cpp"
