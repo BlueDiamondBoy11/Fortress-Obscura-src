@@ -874,6 +874,10 @@ int CHLClient::Init( CreateInterfaceFn appSystemFactory, CreateInterfaceFn physi
 	ConnectTier2Libraries( &appSystemFactory, 1 );
 	ConnectTier3Libraries( &appSystemFactory, 1 );
 
+#ifdef TF_VINTAGE_CLIENT
+	g_pVGuiLocalize->AddFile( "resource/tf_%language%.txt", "GAME" );
+#endif
+
 #ifndef NO_STEAM
 	ClientSteamContext().Activate();
 #endif
