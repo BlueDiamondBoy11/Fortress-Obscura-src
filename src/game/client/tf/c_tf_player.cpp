@@ -1663,6 +1663,11 @@ C_TFPlayer::C_TFPlayer() :
 	ListenForGameEvent( "player_regenerate" );
 	ListenForGameEvent( "sticky_jump" );
 	ListenForGameEvent( "rocket_jump" );
+
+	// Character Lip Sync
+	engine->AddPhonemeFile( "scripts/gamesounds/game_sounds_vo_phonemes.txt" );
+	engine->AddPhonemeFile( "scripts/gamesounds/game_sounds_vo_phonemes_local.txt" );
+	engine->AddPhonemeFile( 0 ); //not sure about this but livetf2 does it
 }
 
 C_TFPlayer::~C_TFPlayer()
