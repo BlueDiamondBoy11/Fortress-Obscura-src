@@ -1,4 +1,4 @@
-//====== Copyright © 1996-2004, Valve Corporation, All rights reserved. =======
+//====== Copyright ï¿½ 1996-2004, Valve Corporation, All rights reserved. =======
 //
 // Purpose: 
 //
@@ -90,6 +90,7 @@ const char *g_aPlayerClassNames[] =
 	"#TF_Class_Name_Pyro",
 	"#TF_Class_Name_Spy",
 	"#TF_Class_Name_Engineer",
+	"#TF_Class_Name_Squire",
 };
 
 const char *g_aDominationEmblems[] =
@@ -123,6 +124,7 @@ const char *g_aPlayerClassEmblems[] =
 	"../hud/leaderboard_class_pyro",
 	"../hud/leaderboard_class_spy",
 	"../hud/leaderboard_class_engineer",
+	"../hud/leaderboard_class_engineer",
 };
 
 const char *g_aPlayerClassEmblemsDead[] =
@@ -135,6 +137,7 @@ const char *g_aPlayerClassEmblemsDead[] =
 	"../hud/leaderboard_class_heavy_d",
 	"../hud/leaderboard_class_pyro_d",
 	"../hud/leaderboard_class_spy_d",
+	"../hud/leaderboard_class_engineer_d",
 	"../hud/leaderboard_class_engineer_d",
 };
 
@@ -150,6 +153,7 @@ const char *g_aPlayerClassNames_NonLocalized[] =
 	"Pyro",
 	"Spy",
 	"Engineer",
+	"Squire,"
 };
 
 //-----------------------------------------------------------------------------
@@ -227,6 +231,7 @@ struct pszWpnEntTranslationListEntry
 	const char *weapon_pyro;
 	const char *weapon_spy;
 	const char *weapon_engineer;
+	const char *weapon_squire;
 };
 static pszWpnEntTranslationListEntry pszWpnEntTranslationList[] =
 {
@@ -241,6 +246,7 @@ static pszWpnEntTranslationListEntry pszWpnEntTranslationList[] =
 	"tf_weapon_shotgun_pyro",		// Pyro
 	"tf_weapon_shotgun_primary",	// Spy
 	"tf_weapon_shotgun_primary",	// Engineer
+	"tf_weapon_shotgun_primary",	// Squire
 
 	"tf_weapon_pistol",				// Base weapon to translate
 	NULL,
@@ -253,6 +259,7 @@ static pszWpnEntTranslationListEntry pszWpnEntTranslationList[] =
 	"tf_weapon_pistol",				// Pyro
 	"tf_weapon_pistol",				// Spy
 	"tf_weapon_pistol",				// Engineer
+	"tf_weapon_pistol",				// Squire
 
 	"tf_weapon_shovel",				// Base weapon to translate
 	NULL,
@@ -265,6 +272,7 @@ static pszWpnEntTranslationListEntry pszWpnEntTranslationList[] =
 	"tf_weapon_shovel",				// Pyro
 	"tf_weapon_shovel",				// Spy
 	"tf_weapon_shovel",				// Engineer
+	"tf_weapon_bottle",				// Squire
 
 	"tf_weapon_bottle",				// Base weapon to translate
 	NULL,
@@ -277,6 +285,7 @@ static pszWpnEntTranslationListEntry pszWpnEntTranslationList[] =
 	"tf_weapon_bottle",				// Pyro
 	"tf_weapon_bottle",				// Spy
 	"tf_weapon_bottle",				// Engineer
+	"tf_weapon_bottle",				// Squire
 
 	"saxxy",						// Base weapon to translate
 	NULL,
@@ -289,6 +298,7 @@ static pszWpnEntTranslationListEntry pszWpnEntTranslationList[] =
 	"tf_weapon_fireaxe",			// Pyro
 	"tf_weapon_knife",				// Spy
 	"tf_weapon_wrench",				// Engineer
+	"tf_weapon_bottle",				// Squire
 
 	"tf_weapon_throwable",			// Base weapon to translate
 	NULL,
@@ -297,6 +307,7 @@ static pszWpnEntTranslationListEntry pszWpnEntTranslationList[] =
 	"tf_weapon_throwable", //UNK_10D88B2
 	"tf_weapon_throwable", //UNK_10D88B2
 	"tf_weapon_throwable", //UNK_10D88D0
+	"tf_weapon_throwable", //UNK_10D88B2
 	"tf_weapon_throwable", //UNK_10D88B2
 	"tf_weapon_throwable", //UNK_10D88B2
 	"tf_weapon_throwable", //UNK_10D88B2
@@ -313,6 +324,7 @@ static pszWpnEntTranslationListEntry pszWpnEntTranslationList[] =
 	"tf_weapon_parachute_secondary",	// Pyro
 	"tf_weapon_parachute_secondary",	// Spy
 	0,									// Engineer
+	"tf_weapon_parachute_secondary",	// Squire
 
 	"tf_weapon_revolver",			// Base weapon to translate
 	NULL,
@@ -325,6 +337,7 @@ static pszWpnEntTranslationListEntry pszWpnEntTranslationList[] =
 	"tf_weapon_revolver_secondary",	// Pyro
 	"tf_weapon_revolver",			// Spy
 	"tf_weapon_revolver_secondary",	// Engineer
+	"tf_weapon_revolver_secondary",	// Squire
 };
 
 //-----------------------------------------------------------------------------
@@ -398,6 +411,7 @@ const char *g_aWeaponNames[] =
 	"TF_WEAPON_BAT_WOOD",
 	"TF_WEAPON_ROBOT_ARM",
 	"TF_WEAPON_BUFF_ITEM",
+	"TF_WEAPON_SWORD",
 	"TF_WEAPON_COUNT",	// end marker, do not add below here
 };
 
@@ -469,6 +483,7 @@ int g_aWeaponDamageTypes[] =
 	DMG_CLUB,	// TF_WEAPON_BAT_WOOD,
 	DMG_CLUB,   // TF_WEAPON_ROBOT_ARM
 	DMG_GENERIC, // TF_WEAPON_BUFF_ITEM
+	DMG_SLASH,		// TF_WEAPON_SWORD,
 
 	// This is a special entry that must match with TF_WEAPON_COUNT
 	// to protect against updating the weapon list without updating this list
