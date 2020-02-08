@@ -113,6 +113,9 @@ public:
 
 	virtual void		LeaveVehicle( const Vector &vecExitPoint, const QAngle &vecExitAngles );
 
+	// from CBasePlayer
+	virtual void		SetupVisibility( CBaseEntity *pViewEntity, unsigned char *pvs, int pvssize );
+
 	// Combats
 	virtual void		TraceAttack(const CTakeDamageInfo &info, const Vector &vecDir, trace_t *ptr, CDmgAccumulator *pAccumulator);
 	virtual int			TakeHealth( float flHealth, int bitsDamageType );
