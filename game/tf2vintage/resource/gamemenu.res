@@ -28,33 +28,28 @@
 		"label" "#GameUI_GameMenu_CreateServer"
 		"command" "OpenCreateMultiplayerGameDialog"
 	}
-	"7"
-	{
-		"label"	"#GameUI_LoadCommentary"
-		"command" "OpenLoadSingleplayerCommentaryDialog"
-	}
-	"8"
+	"6"
 	{
 		"label" "#GameUI_GameMenu_Achievements"
 		"command" "OpenAchievementsDialog"
 	}
-	"9"
+	"7"
 	{
 		"label" "#GameUI_GameMenu_PlayerStats"
 		"command" "engine showstatsdlg"
 	}
-	"10"
+	"8"
 	{
 		"label" "#GameUI_Controller"
 		"command" "OpenControllerDialog"
 		"ConsoleOnly" "1"
 	}
-	"11"
+	"9"
 	{
 		"label" "#GameUI_GameMenu_Options"
 		"command" "OpenOptionsDialog"
 	}
-	"12"
+	"10"
 	{
 		"label" "#GameUI_GameMenu_Quit"
 		"command" "Quit"

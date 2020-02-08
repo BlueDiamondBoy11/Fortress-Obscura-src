@@ -17,3 +17,4 @@
 		//"bg_image"		"flagtime_empty"
 	}	
 }
+

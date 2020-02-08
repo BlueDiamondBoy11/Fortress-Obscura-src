@@ -13,7 +13,7 @@
 		{
 		"volume"	"0.2"
 		"pitch"		"100"
-		"wave"		"ambient_mp3\voices\appartments_crowd_loop1.mp3"
+		"wave"		"ambient\voices\appartments_crowd_loop1.wav"
 	}
 
 
@@ -55,7 +55,7 @@
 		"pitch"		"100"
 		"rndwave"
 		{
-			"wave"		"ambient_mp3\machines\heli_pass1.mp3"
+			"wave"		"ambient\machines\heli_pass1.wav"
 		}
 	}
 	
@@ -66,7 +66,7 @@
 		"pitch"		"180"
 		"rndwave"
 		{
-			"wave"		"ambient_mp3\alarms\apc_alarm_pass1.mp3"
+			"wave"		"ambient\alarms\apc_alarm_pass1.wav"
 		}
 	}
 } 
@@ -89,7 +89,7 @@
 	{
 		"volume"	"1"
 		"pitch"		"100"
-		"wave"		"ambient_mp3\atmosphere\plaza_amb.mp3"
+		"wave"		"ambient\atmosphere\plaza_amb.wav"
 	}
 	
 		"playrandom"
@@ -99,7 +99,7 @@
 		"pitch"		"180"
 		"rndwave"
 		{
-			"wave"		"ambient_mp3\alarms\apc_alarm_pass1.mp3"
+			"wave"		"ambient\alarms\apc_alarm_pass1.wav"
 		}
 	}
 	"playrandom"
@@ -123,9 +123,9 @@
 		"pitch"		"100"
 		"rndwave"
 		{
-			"wave"		"ambient_mp3\materials\shutter6.mp3"
-			"wave"		"ambient_mp3\materials\shutter7.mp3"
-			"wave"		"ambient_mp3\materials\shutter8.mp3"
+			"wave"		"ambient\materials\shutter6.wav"
+			"wave"		"ambient\materials\shutter7.wav"
+			"wave"		"ambient\materials\shutter8.wav"
 			"wave"		"ambient_mp3\shutter4.mp3"
 			"wave"		"ambient_mp3\shutter5.mp3"
 			"wave"		"ambient_mp3\shutter6.mp3"
@@ -155,7 +155,7 @@
 		"pitch"		"100"
 		"rndwave"
 		{
-			"wave"		"ambient_mp3\machines\heli_pass1.mp3"
+			"wave"		"ambient\machines\heli_pass1.wav"
 		}
 	}
 } 
@@ -190,7 +190,7 @@
 		"pitch"		"100"
 		"position"		"0"
 		"attenuation"	"0.19"	
-		"wave"		"ambient_mp3\levels\canals\waterleak_loop1.mp3"
+		"wave"		"ambient\levels\canals\waterleak_loop1.wav"
 	}
 
 		"playlooping"
@@ -216,7 +216,7 @@
 		"pitch"		"100"
 		"position"		"3"
 		"attenuation"	"0.19"	
-		"wave"		"ambient_mp3\levels\canals\waterleak_loop1.mp3"
+		"wave"		"ambient\levels\canals\waterleak_loop1.wav"
 	}
 			"playlooping"
 	{

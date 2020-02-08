@@ -108,6 +108,16 @@
 	"decals/scorch2_subrect" "1"
 }
 
+"footprintL_snow"
+{
+	"decals/footprintL_snow_subrect" "1"
+}
+
+"footprintR_snow"
+{
+	"decals/footprintR_snow_subrect" "1"
+}
+
 "Blood"
 {
 	"decals/blood1_subrect" "1"

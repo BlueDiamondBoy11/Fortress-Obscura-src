@@ -94,10 +94,10 @@
 		"pitch"		"100"
 		"rndwave"
 		{
-			"wave"		"ambient_mp3/water/distant_drip1.mp3"
-			"wave"		"ambient_mp3/water/distant_drip2.mp3"
-			"wave"		"ambient_mp3/water/distant_drip3.mp3"
-			"wave"		"ambient_mp3/water/distant_drip4.mp3"
+			"wave"		"ambient/water/distant_drip1.wav"
+			"wave"		"ambient/water/distant_drip2.wav"
+			"wave"		"ambient/water/distant_drip3.wav"
+			"wave"		"ambient/water/distant_drip4.wav"
 		}
 	}
 	
@@ -108,10 +108,10 @@
 		"pitch"		"100"
 		"rndwave"
 		{
-			"wave"		"ambient_mp3/water/distant_drip1.mp3"
-			"wave"		"ambient_mp3/water/distant_drip2.mp3"
-			"wave"		"ambient_mp3/water/distant_drip3.mp3"
-			"wave"		"ambient_mp3/water/distant_drip4.mp3"
+			"wave"		"ambient/water/distant_drip1.wav"
+			"wave"		"ambient/water/distant_drip2.wav"
+			"wave"		"ambient/water/distant_drip3.wav"
+			"wave"		"ambient/water/distant_drip4.wav"
 		}
 	}
 
