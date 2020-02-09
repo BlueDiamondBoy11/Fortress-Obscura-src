@@ -1,4 +1,4 @@
-//========= Copyright © 1996-2004, Valve LLC, All rights reserved. ============
+//========= Copyright ï¿½ 1996-2004, Valve LLC, All rights reserved. ============
 //
 // Purpose: 
 //
@@ -186,6 +186,12 @@ unsigned int CTFGameMovement::PlayerSolidMask( bool brushOnly )
 
 		case TF_TEAM_BLUE:
 			uMask = CONTENTS_REDTEAM;
+			break;
+		case TF_TEAM_GREEN:
+			uMask = CONTENTS_GREENTEAM;
+			break;
+		case TF_TEAM_YELLOW:
+			uMask = CONTENTS_YELLOWTEAM;
 			break;
 		}
 	}

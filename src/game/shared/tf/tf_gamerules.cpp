@@ -220,6 +220,9 @@ BEGIN_NETWORK_TABLE_NOBASE( CTFGameRules, DT_TFGameRules )
 	RecvPropBool( RECVINFO( m_bPowerupMode ) ),
 	RecvPropEHandle( RECVINFO( m_hRedKothTimer ) ), 
 	RecvPropEHandle( RECVINFO( m_hBlueKothTimer ) ),
+	RecvPropEHandle( RECVINFO( m_hGreenKothTimer ) ), 
+	RecvPropEHandle( RECVINFO( m_hYellowKothTimer ) ),
+
 
 #else
 
@@ -238,6 +241,8 @@ BEGIN_NETWORK_TABLE_NOBASE( CTFGameRules, DT_TFGameRules )
 	SendPropBool( SENDINFO( m_bPowerupMode ) ),
 	SendPropEHandle( SENDINFO( m_hRedKothTimer ) ), 
 	SendPropEHandle( SENDINFO( m_hBlueKothTimer ) ),
+	SendPropEHandle( SENDINFO( m_hGreenKothTimer ) ), 
+	SendPropEHandle( SENDINFO( m_hYellowKothTimer ) ),
 
 #endif
 END_NETWORK_TABLE()
@@ -2489,14 +2494,31 @@ void cc_ShowRespawnTimes()
 		float flBlueScalar = pRules->GetRespawnTimeScalar( TF_TEAM_BLUE );
 		float flNextBlueRespawn = pRules->GetNextRespawnWave( TF_TEAM_BLUE, NULL ) - gpGlobals->curtime;
 
+		float flGreenMin = ( pRules->m_TeamRespawnWaveTimes[TF_TEAM_GREEN] >= 0 ? pRules->m_TeamRespawnWaveTimes[TF_TEAM_GREEN] : mp_respawnwavetime.GetFloat() );
+		float flGreenScalar = pRules->GetRespawnTimeScalar( TF_TEAM_GREEN );
+		float flNextGreenRespawn = pRules->GetNextRespawnWave( TF_TEAM_GREEN, NULL ) - gpGlobals->curtime;
+
+		float flYellowMin = ( pRules->m_TeamRespawnWaveTimes[TF_TEAM_YELLOW] >= 0 ? pRules->m_TeamRespawnWaveTimes[TF_TEAM_YELLOW] : mp_respawnwavetime.GetFloat() );
+		float flYellowScalar = pRules->GetRespawnTimeScalar( TF_TEAM_YELLOW );
+		float flNextYellowRespawn = pRules->GetNextRespawnWave( TF_TEAM_YELLOW, NULL ) - gpGlobals->curtime;
+
+
 		char tempRed[128];
 		Q_snprintf( tempRed, sizeof( tempRed ),   "Red:  Min Spawn %2.2f, Scalar %2.2f, Next Spawn In: %.2f\n", flRedMin, flRedScalar, flNextRedRespawn );
 
 		char tempBlue[128];
 		Q_snprintf( tempBlue, sizeof( tempBlue ), "Blue: Min Spawn %2.2f, Scalar %2.2f, Next Spawn In: %.2f\n", flBlueMin, flBlueScalar, flNextBlueRespawn );
 
+		char tempGreen[128];
+		Q_snprintf( tempGreen, sizeof( tempGreen ), "Green: Min Spawn %2.2f, Scalar %2.2f, Next Spawn In: %.2f\n", flGreenMin, flGreenScalar, flNextGreenRespawn );
+
+		char tempYellow[128];
+		Q_snprintf( tempYellow, sizeof( tempYellow ), "Yellow: Min Spawn %2.2f, Scalar %2.2f, Next Spawn In: %.2f\n", flYellowMin, flYellowScalar, flNextYellowRespawn );
+
 		ClientPrint( pPlayer, HUD_PRINTTALK, tempRed );
 		ClientPrint( pPlayer, HUD_PRINTTALK, tempBlue );
+		ClientPrint( pPlayer, HUD_PRINTTALK, tempGreen );
+		ClientPrint( pPlayer, HUD_PRINTTALK, tempYellow );
 	}
 }
 
@@ -5391,6 +5413,14 @@ void CTFGameRules::GetTeamGlowColor( int nTeam, float &r, float &g, float &b )
 		case TF_TEAM_RED:
 			r = 0.74f; g = 0.23f; b = 0.23f;
 			break;
+		
+		case TF_TEAM_GREEN:
+			r = 0.23f; g = 0.76f; b = 0.23f;
+			break;
+		
+		case TF_TEAM_YELLOW:
+			r = 0.74f; g = 0.74f; b = 0.23f;
+			break;
 
 		default:
 			r = 0.76f; g = 0.76f; b = 0.76f;
@@ -5558,7 +5588,7 @@ int CTFGameRules::CountActivePlayers( void )
 		if ( m_hArenaQueue.Count() > 1 )
 			return iActivePlayers;
 			
-		if ( iActivePlayers <= 1 || ( GetGlobalTFTeam( TF_TEAM_BLUE ) && GetGlobalTFTeam( TF_TEAM_BLUE )->GetNumPlayers() <= 0 ) || ( !GetGlobalTFTeam( TF_TEAM_RED ) && GetGlobalTFTeam( TF_TEAM_RED )->GetNumPlayers() <= 0 ) )
+		if ( iActivePlayers <= 1 || ( GetGlobalTFTeam( TF_TEAM_BLUE ) && GetGlobalTFTeam( TF_TEAM_BLUE )->GetNumPlayers() <= 0 ) || ( !GetGlobalTFTeam( TF_TEAM_RED ) && GetGlobalTFTeam( TF_TEAM_RED )->GetNumPlayers() <= 0 ) || ( !GetGlobalTFTeam( TF_TEAM_GREEN ) && GetGlobalTFTeam( TF_TEAM_GREEN )->GetNumPlayers() <= 0 ) || ( !GetGlobalTFTeam( TF_TEAM_YELLOW ) && GetGlobalTFTeam( TF_TEAM_YELLOW )->GetNumPlayers() <= 0 ) )
 			return 0;
 	}
 

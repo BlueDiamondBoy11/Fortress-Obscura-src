@@ -1,4 +1,4 @@
-//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//========= Copyright ï¿½ 1996-2005, Valve Corporation, All rights reserved. ============//
 //
 // Purpose: TF's custom C_PlayerResource
 //
@@ -34,6 +34,8 @@ C_TF_PlayerResource::C_TF_PlayerResource()
 	m_Colors[TEAM_SPECTATOR] = COLOR_TF_SPECTATOR;
 	m_Colors[TF_TEAM_RED] = COLOR_RED;
 	m_Colors[TF_TEAM_BLUE] = COLOR_BLUE;
+	m_Colors[TF_TEAM_GREEN] = COLOR_TF_GREEN;
+	m_Colors[TF_TEAM_BLUE] = COLOR_TF_YELLOW;
 }
 
 //-----------------------------------------------------------------------------

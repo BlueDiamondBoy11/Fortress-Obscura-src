@@ -1792,6 +1792,12 @@ const char *CTFWeaponBase::GetTracerType( void )
 			case TF_TEAM_BLUE:
 				Q_snprintf(m_szTracerName, MAX_TRACER_NAME, "%s_%s", GetTFWpnData().m_szTracerEffect, "blue");
 				break;
+			case TF_TEAM_GREEN:
+				Q_snprintf(m_szTracerName, MAX_TRACER_NAME, "%s_%s", GetTFWpnData().m_szTracerEffect, "green");
+				break;
+			case TF_TEAM_YELLOW:
+				Q_snprintf(m_szTracerName, MAX_TRACER_NAME, "%s_%s", GetTFWpnData().m_szTracerEffect, "yellow");
+				break;
 			default:
 				Q_snprintf(m_szTracerName, MAX_TRACER_NAME, "%s_%s", GetTFWpnData().m_szTracerEffect, "red");
 				break;
@@ -3347,6 +3353,12 @@ int CTFWeaponBase::GetSkin()
 				nSkin = 0;
 				break;
 			case TF_TEAM_BLUE:
+				nSkin = 1;
+				break;
+			case TF_TEAM_GREEN:
+				nSkin = 1;
+				break;
+			case TF_TEAM_YELLOW:
 				nSkin = 1;
 				break;
 			}

@@ -1580,8 +1580,39 @@ void CControlPointProgressBar::UpdateBarText( void )
 		// If the opponents can never recapture this point back, we use a different string
 		if ( iPlayerTeam != TEAM_UNASSIGNED )
 		{
-			int iEnemyTeam = ( iPlayerTeam == TF_TEAM_RED ) ? TF_TEAM_BLUE : TF_TEAM_RED;
-			if ( !ObjectiveResource()->TeamCanCapPoint( iCP, iEnemyTeam ) )
+			//int iEnemyTeam = ( iPlayerTeam == TF_TEAM_RED ) ? TF_TEAM_BLUE : TF_TEAM_RED;
+			int iEnemyTeams[3] {};
+			switch(iPlayerTeam)
+			{
+				case TF_TEAM_RED:
+					iEnemyTeams[0] = TF_TEAM_BLUE;
+					iEnemyTeams[0] = TF_TEAM_GREEN;
+					iEnemyTeams[0] = TF_TEAM_YELLOW;
+					break;
+				case TF_TEAM_BLUE:
+					iEnemyTeams[0] = TF_TEAM_RED;
+					iEnemyTeams[0] = TF_TEAM_GREEN;
+					iEnemyTeams[0] = TF_TEAM_YELLOW;
+					break;
+				case TF_TEAM_GREEN:
+					iEnemyTeams[0] = TF_TEAM_RED;
+					iEnemyTeams[0] = TF_TEAM_BLUE;
+					iEnemyTeams[0] = TF_TEAM_YELLOW;
+					break;
+				case TF_TEAM_YELLOW:
+					iEnemyTeams[0] = TF_TEAM_RED;
+					iEnemyTeams[0] = TF_TEAM_BLUE;
+					iEnemyTeams[0] = TF_TEAM_GREEN;
+					break;
+			}
+
+			bool ValidCap;
+			for(int i = 0; i < sizeof(iEnemyTeams); i++)
+			{
+				!ObjectiveResource()->TeamCanCapPoint( iCP, iEnemyTeams[i]);
+			}
+
+			if ( ValidCap )
 			{
 				m_pBarText->SetText( "#Team_Capture_Owned" );
 				return;

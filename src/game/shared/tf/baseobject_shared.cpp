@@ -1,4 +1,4 @@
-//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//========= Copyright ï¿½ 1996-2005, Valve Corporation, All rights reserved. ============//
 //
 // Purpose: 
 //
@@ -450,6 +450,12 @@ void CBaseObject::OnGoActive( void )
 	case TF_TEAM_BLUE:
 		pszEffect = "cart_flashinglight";
 		break;
+	case TF_TEAM_GREEN:
+		pszEffect = "cart_flashinglight";
+		break;
+	case TF_TEAM_YELLOW:
+		pszEffect = "cart_flashinglight";
+		break;
 	default:
 		pszEffect = "cart_flashinglight_red";
 		break;
@@ -502,6 +508,14 @@ bool CBaseObject::ShouldCollide( int collisionGroup, int contentsMask ) const
 
 		case TF_TEAM_BLUE:
 			if ( !( contentsMask & CONTENTS_BLUETEAM ) )
+				return false;
+			break;
+		case TF_TEAM_GREEN:
+			if ( !(contentsMask & CONTENTS_GREENTEAM) )
+				return false;
+			break;
+		case TF_TEAM_YELLOW:
+			if ( !(contentsMask & CONTENTS_YELLOWTEAM) )
 				return false;
 			break;
 		}

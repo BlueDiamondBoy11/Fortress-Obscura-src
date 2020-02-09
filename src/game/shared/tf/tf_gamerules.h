@@ -160,6 +160,8 @@ public:
 
 	CTeamRoundTimer* GetBlueKothRoundTimer( void ) { return m_hBlueKothTimer.Get(); }
 	CTeamRoundTimer* GetRedKothRoundTimer( void ) { return m_hRedKothTimer.Get(); }
+	CTeamRoundTimer* GetGreenKothRoundTimer( void ) { return m_hGreenKothTimer.Get(); }
+	CTeamRoundTimer* GetYellowKothRoundTimer( void ) { return m_hYellowKothTimer.Get(); }
 
 
 #ifdef GAME_DLL
@@ -244,6 +246,8 @@ public:
 
 	void			SetBlueKothRoundTimer( CTeamRoundTimer *pTimer ) { m_hBlueKothTimer.Set( pTimer ); }
 	void			SetRedKothRoundTimer( CTeamRoundTimer *pTimer ) { m_hRedKothTimer.Set( pTimer ); }
+	void			SetGreeneKothRoundTimer( CTeamRoundTimer *pTimer ) { m_hGreenKothTimer.Set( pTimer ); }
+	void			SetYellowKothRoundTimer( CTeamRoundTimer *pTimer ) { m_hYellowKothTimer.Set( pTimer ); }
 	float			GetRoundStartTime(void){ return m_flRoundStartTime; }
 
 	virtual bool ClientConnected(edict_t *pEntity, const char *pszName, const char *pszAddress, char *reject, int maxrejectlen);
@@ -441,6 +445,8 @@ private:
 	CNetworkVar( bool, m_bPowerupMode );
 	CNetworkVar( CHandle<CTeamRoundTimer>, m_hBlueKothTimer );
 	CNetworkVar( CHandle<CTeamRoundTimer>, m_hRedKothTimer );
+	CNetworkVar( CHandle<CTeamRoundTimer>, m_hGreenKothTimer );
+	CNetworkVar( CHandle<CTeamRoundTimer>, m_hYellowKothTimer );
 
 public:
 

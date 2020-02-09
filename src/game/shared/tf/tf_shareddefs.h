@@ -27,6 +27,8 @@ enum
 {
 	TF_TEAM_RED = LAST_SHARED_TEAM+1,
 	TF_TEAM_BLUE,
+	TF_TEAM_GREEN,
+	TF_TEAM_YELLOW,
 	TF_TEAM_COUNT
 };
 
@@ -44,6 +46,8 @@ void PrecacheTeamParticles( const char *pszFormat, bool bDummyBoolean = false, c
 
 #define CONTENTS_REDTEAM	CONTENTS_TEAM1
 #define CONTENTS_BLUETEAM	CONTENTS_TEAM2
+#define CONTENTS_GREENTEAM	CONTENTS_UNUSED
+#define CONTENTS_YELLOWTEAM	CONTENTS_UNUSED6
 			
 // Team roles
 enum 
@@ -96,6 +100,8 @@ enum
 
 #define COLOR_TF_BLUE	Color( 64, 64, 255, 255 )
 #define COLOR_TF_RED	Color( 255, 64, 64, 255 )
+#define COLOR_TF_GREEN	Color( 64, 255, 64, 255 )
+#define COLOR_TF_YELLOW	Color( 255, 255, 64, 255 )
 #define COLOR_TF_SPECTATOR Color( 245, 229, 196, 255 )
 
 

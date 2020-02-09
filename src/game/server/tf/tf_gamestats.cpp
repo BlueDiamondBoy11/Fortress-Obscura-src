@@ -1,4 +1,4 @@
-//====== Copyright © 1996-2006, Valve Corporation, All rights reserved. =======//
+//====== Copyright ï¿½ 1996-2006, Valve Corporation, All rights reserved. =======//
 //
 // Purpose: 
 //
@@ -783,6 +783,20 @@ void CTFGameStats::Event_RoundEnd( int iWinningTeam, bool bFullRound, float flRo
 		if ( bWasSuddenDeathWin )
 		{
 			map->m_Header.m_iBlueSuddenDeathWins++;
+		}
+		break;
+	case TF_TEAM_GREEN:
+		map->m_Header.m_iGreenWins++;
+		if ( bWasSuddenDeathWin )
+		{
+			map->m_Header.m_iGreenSuddenDeathWins++;
+		}
+		break;
+	case TF_TEAM_YELLOW:
+		map->m_Header.m_iYellowWins++;
+		if ( bWasSuddenDeathWin )
+		{
+			map->m_Header.m_iYellowSuddenDeathWins++;
 		}
 		break;
 	case TEAM_UNASSIGNED:

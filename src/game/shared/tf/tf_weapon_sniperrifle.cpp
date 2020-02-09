@@ -922,6 +922,12 @@ void CSniperDot::OnDataChanged( DataUpdateType_t updateType )
 		case TF_TEAM_BLUE:
 			m_hSpriteMaterial.Init(SNIPER_DOT_SPRITE_BLUE, TEXTURE_GROUP_CLIENT_EFFECTS);
 			break;
+		case TF_TEAM_GREEN:
+			m_hSpriteMaterial.Init(SNIPER_DOT_SPRITE_BLUE, TEXTURE_GROUP_CLIENT_EFFECTS);
+			break;
+		case TF_TEAM_YELLOW:
+			m_hSpriteMaterial.Init(SNIPER_DOT_SPRITE_BLUE, TEXTURE_GROUP_CLIENT_EFFECTS);
+			break;
 		}
 	}
 }

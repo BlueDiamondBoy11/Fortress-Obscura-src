@@ -1,4 +1,4 @@
-//===== Copyright © 1996-2005, Valve Corporation, All rights reserved. ======//
+//===== Copyright ï¿½ 1996-2005, Valve Corporation, All rights reserved. ======//
 //
 // Purpose:
 //
@@ -434,6 +434,12 @@ int CTFViewModel::GetSkin()
 				nSkin = 0;
 				break;
 			case TF_TEAM_BLUE:
+				nSkin = 1;
+				break;
+			case TF_TEAM_GREEN:
+				nSkin = 1;
+				break;
+			case TF_TEAM_YELLOW:
 				nSkin = 1;
 				break;
 			}

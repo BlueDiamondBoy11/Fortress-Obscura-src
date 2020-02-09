@@ -1,4 +1,4 @@
-//====== Copyright © 1996-2003, Valve Corporation, All rights reserved. =======
+//====== Copyright ï¿½ 1996-2003, Valve Corporation, All rights reserved. =======
 //
 // Purpose: 
 //
@@ -442,6 +442,14 @@ void C_TFRagdoll::CreateTFRagdoll( void )
 			break;
 
 		case TF_TEAM_BLUE:
+			m_nSkin = 1;
+			break;
+
+		case TF_TEAM_GREEN:
+			m_nSkin = 1;
+			break;
+
+		case TF_TEAM_YELLOW:
 			m_nSkin = 1;
 			break;
 		}
@@ -895,6 +903,14 @@ void CSpyInvisProxy::OnBind( C_BaseEntity *pEnt )
 			r = 0.4; g = 0.5; b = 1.0;
 			break;
 
+		case TF_TEAM_GREEN:
+			r = 0.4; g = 1.0; b = 0.4;
+			break;
+
+		case TF_TEAM_YELLOW:
+			r = 1.0; g = 1.0; b = 0.4;
+			break;
+
 		default:
 			r = 0.4; g = 0.5; b = 1.0;
 			break;
@@ -1198,6 +1214,12 @@ public:
 				case TF_TEAM_BLUE:
 					vecColor = Vector( 6, 21, 80 );
 					break;
+				case TF_TEAM_GREEN:
+					vecColor = Vector( 6, 21, 80 );
+					break;
+				case TF_TEAM_YELLOW:
+					vecColor = Vector( 6, 21, 80 );
+					break;
 				}
 			}
 		}
@@ -1214,6 +1236,12 @@ public:
 					vecColor = Vector( 237, 140, 55 );
 					break;
 				case TF_TEAM_BLUE:
+					vecColor = Vector( 28, 168, 112 );
+					break;
+				case TF_TEAM_GREEN:
+					vecColor = Vector( 28, 168, 112 );
+					break;
+				case TF_TEAM_YELLOW:
 					vecColor = Vector( 28, 168, 112 );
 					break;
 				}
@@ -1446,6 +1474,14 @@ void CInvisProxy::HandleSpyInvis( C_TFPlayer *pPlayer )
 
 	case TF_TEAM_BLUE:
 		r = 0.4; g = 0.5; b = 1.0;
+		break;
+
+	case TF_TEAM_GREEN:
+		r = 0.4; g = 1.0; b = 0.4;
+		break;
+
+	case TF_TEAM_YELLOW:
+		r = 1.0; g = 1.0; b = 0.4;
 		break;
 
 	default:
@@ -2052,6 +2088,14 @@ void C_TFPlayer::OnDataChanged( DataUpdateType_t updateType )
 						pTeam = "blue";
 						break;
 
+					case TF_TEAM_GREEN:
+						pTeam = "green";
+						break;
+
+					case TF_TEAM_YELLOW:
+						pTeam = "yellow";
+						break;
+
 					case TEAM_SPECTATOR:
 						pTeam = "spectate";
 						break;
@@ -2147,6 +2191,12 @@ void C_TFPlayer::InitInvulnerableMaterial( void )
 	case TF_TEAM_BLUE:	
 		pszMaterial = "models/effects/invulnfx_blue.vmt";
 		break;
+	case TF_TEAM_GREEN:	
+		pszMaterial = "models/effects/invulnfx_blue.vmt";
+		break;
+	case TF_TEAM_YELLOW:	
+		pszMaterial = "models/effects/invulnfx_blue.vmt";
+		break;
 	default:
 		break;
 	}
@@ -2203,6 +2253,14 @@ void C_TFPlayer::GetGlowEffectColor( float *r, float *g, float *b )
 
 		case TF_TEAM_RED:
 			*r = 0.74f; *g = 0.23f; *b = 0.23f;
+			break;
+		
+		case TF_TEAM_GREEN:
+			*r = 0.49f; *g = 0.76f; *b = 0.23f;
+			break;
+
+		case TF_TEAM_YELLOW:
+			*r = 0.76f; *g = 0.76f; *b = 0.23f;
 			break;
 
 		default:
@@ -2392,6 +2450,12 @@ bool C_TFPlayer::IsEnemyPlayer( void )
 
 	case TF_TEAM_BLUE:
 		return (GetTeamNumber() == TF_TEAM_RED);
+
+	case TF_TEAM_GREEN:
+		return (GetTeamNumber() == TF_TEAM_GREEN);
+
+	case TF_TEAM_YELLOW:
+		return (GetTeamNumber() == TF_TEAM_YELLOW);
 
 	default:
 		break;
@@ -3546,6 +3610,16 @@ void C_TFPlayer::GetTeamColor( Color &color )
 			color[1] = 109;
 			color[2] = 129;
 			break;
+		case TF_TEAM_GREEN:
+			color[0] = 76;
+			color[1] = 159;
+			color[2] = 109;
+			break;
+		case TF_TEAM_YELLOW:
+			color[0] = 159;
+			color[1] = 159;
+			color[2] = 76;
+			break;
 		default:
 			color[0] = 255;
 			color[1] = 255;
@@ -3732,6 +3806,14 @@ bool C_TFPlayer::ShouldCollide( int collisionGroup, int contentsMask ) const
 			if ( !( contentsMask & CONTENTS_BLUETEAM ) )
 				return false;
 			break;
+		case TF_TEAM_GREEN:
+			if ( !( contentsMask & CONTENTS_GREENTEAM ) )
+				return false;
+			break;
+		case TF_TEAM_YELLOW:
+			if ( !( contentsMask & CONTENTS_YELLOWTEAM ) )
+				return false;
+			break;
 		}
 	}
 	return BaseClass::ShouldCollide( collisionGroup, contentsMask );
@@ -3769,6 +3851,12 @@ int C_TFPlayer::GetSkin()
 			break;
 
 		case TF_TEAM_BLUE:
+			nSkin = 1;
+			break;
+		case TF_TEAM_GREEN:
+			nSkin = 1;
+			break;
+		case TF_TEAM_YELLOW:
 			nSkin = 1;
 			break;
 
@@ -4406,6 +4494,14 @@ IMaterial *C_TFPlayer::GetHeadLabelMaterial( void )
 			break;
 
 		case TF_TEAM_BLUE:
+			return g_pHeadLabelMaterial[TF_PLAYER_HEAD_LABEL_BLUE];
+			break;
+		
+		case TF_TEAM_GREEN:
+			return g_pHeadLabelMaterial[TF_PLAYER_HEAD_LABEL_BLUE];
+			break;
+
+		case TF_TEAM_YELLOW:
 			return g_pHeadLabelMaterial[TF_PLAYER_HEAD_LABEL_BLUE];
 			break;
 	}

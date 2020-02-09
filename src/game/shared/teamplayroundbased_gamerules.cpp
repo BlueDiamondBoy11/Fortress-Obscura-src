@@ -3674,6 +3674,12 @@ void CTeamplayRoundBasedRules::GetPotentialPlayersLobbyPlayerInfo( CUtlVector<Lo
 					vecLobbyPlayers.FastRemove( i );
 				break;
 
+			case TF_TEAM_GREEN:
+				break;
+
+			case TF_TEAM_YELLOW:
+				break;
+
 			case TEAM_SPECTATOR:
 				vecLobbyPlayers.FastRemove( i );
 				break;

@@ -1,4 +1,4 @@
-//========= Copyright © 1996-2001, Valve LLC, All rights reserved. ============
+//========= Copyright ï¿½ 1996-2001, Valve LLC, All rights reserved. ============
 //
 // Purpose: 
 //
@@ -86,6 +86,14 @@ bool C_FuncRespawnRoomVisualizer::ShouldCollide( int collisionGroup, int content
 
 		case TF_TEAM_RED:
 			if ( !(contentsMask & CONTENTS_REDTEAM) )
+				return false;
+			break;
+		case TF_TEAM_GREEN:
+			if ( !(contentsMask & CONTENTS_GREENTEAM) )
+				return false;
+			break;
+		case TF_TEAM_YELLOW:
+			if ( !(contentsMask & CONTENTS_YELLOWTEAM) )
 				return false;
 			break;
 		}

@@ -1,4 +1,4 @@
-//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//========= Copyright ï¿½ 1996-2005, Valve Corporation, All rights reserved. ============//
 //
 // Purpose:
 //
@@ -178,6 +178,8 @@ Color CHudChat::GetClientColor( int clientIndex )
 		{
 		case TF_TEAM_RED	: return pScheme->GetColor( "TFColors.ChatTextTeamRed", g_ColorRed );
 		case TF_TEAM_BLUE	: return pScheme->GetColor( "TFColors.ChatTextTeamBlue", g_ColorBlue );
+		case TF_TEAM_GREEN	: return pScheme->GetColor( "TFColors.ChatTextTeamGreen", g_ColorGreen );
+		case TF_TEAM_YELLOW	: return pScheme->GetColor( "TFColors.ChatTextTeamYellow", g_ColorYellow );
 		default	: return g_ColorGrey;
 		}
 	}

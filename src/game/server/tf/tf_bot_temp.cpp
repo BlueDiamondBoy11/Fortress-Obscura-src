@@ -184,11 +184,15 @@ CON_COMMAND_F( bot, "Add a bot.", FCVAR_CHEAT )
 				iTeam = TF_TEAM_RED;
 			else if ( stricmp( pVal, "blue" ) == 0 )
 				iTeam = TF_TEAM_BLUE;
+			else if ( stricmp( pVal, "green" ) == 0 )
+				iTeam = TF_TEAM_GREEN;
+			else if ( stricmp( pVal, "yellow" ) == 0 )
+				iTeam = TF_TEAM_YELLOW;
 			else if ( stricmp( pVal, "spectator" ) == 0 )
 				iTeam = TEAM_SPECTATOR;
 			else if ( stricmp( pVal, "random" ) == 0 )
 			{
-				iTeam = RandomInt( 0, 100 ) < 50 ? TF_TEAM_BLUE : TF_TEAM_RED;
+				iTeam = RandomInt( 0, 100 ) < 50 ? (RandomInt(0, 50) < 25 ? TF_TEAM_GREEN : TF_TEAM_YELLOW) : (RandomInt(0, 50) < 25 ? TF_TEAM_BLUE : TF_TEAM_RED);
 			}
 			else
 				iTeam = TEAM_UNASSIGNED;
@@ -332,6 +336,12 @@ void Bot_Think( CTFPlayer *pBot )
 			break;
 		case TF_TEAM_BLUE:
 			pszTeam = "blue";
+			break;
+		case TF_TEAM_GREEN:
+			pszTeam = "green";
+			break;
+		case TF_TEAM_YELLOW:
+			pszTeam = "yellow";
 			break;
 		case TEAM_SPECTATOR:
 			pszTeam = "spectator";
@@ -707,9 +717,13 @@ CON_COMMAND_F( bot_changeteams, "Make all bots change teams", FCVAR_CHEAT )
 				// toggle team between red & blue
 				pPlayer->ChangeTeam( TF_TEAM_BLUE + TF_TEAM_RED - iTeam );
 			}
+			else if(TF_TEAM_GREEN == iTeam || TF_TEAM_YELLOW == iTeam)
+			{
+				pPlayer->ChangeTeam(TF_TEAM_YELLOW + TF_TEAM_GREEN - iTeam);
+			}
 			else if (iTeam == TEAM_UNASSIGNED || iTeam == TEAM_SPECTATOR)
 			{
-				pPlayer->ChangeTeam( RandomInt(TF_TEAM_BLUE, TF_TEAM_RED) );
+				pPlayer->ChangeTeam( (RandomInt( 0, 100 ) < 50 ? (RandomInt(0, 50) < 25 ? TF_TEAM_GREEN : TF_TEAM_YELLOW) : (RandomInt(0, 50) < 25 ? TF_TEAM_BLUE : TF_TEAM_RED)) );
 			}
 		}
 	}

@@ -1296,6 +1296,12 @@ void CTFPlayerShared::OnAddInvulnerable( void )
 		case TF_TEAM_RED:
 			pEffectName =  "effects/invuln_overlay_red";
 			break;
+		case TF_TEAM_GREEN:
+			pEffectName =  "effects/invuln_overlay_blue";
+			break;
+		case TF_TEAM_YELLOW:
+			pEffectName =  "effects/invuln_overlay_blue";
+			break;
 		default:
 			pEffectName = "effects/invuln_overlay_blue";
 			break;
@@ -1754,7 +1760,7 @@ void CTFPlayerShared::AddPhaseEffects( void )
 
 
 	// TODO: Clean this up a bit more
-	const char* pszEffect = m_pOuter->GetTeamNumber() == TF_TEAM_BLUE ? "effects/beam001_blu.vmt" : "effects/beam001_red.vmt";
+	const char* pszEffect = m_pOuter->GetTeamNumber() > TF_TEAM_BLUE ? "effects/beam001_blu.vmt" : m_pOuter->GetTeamNumber() == TF_TEAM_BLUE ? "effects/beam001_blu.vmt" : "effects/beam001_red.vmt";
 	Vector vecOrigin = pPlayer->GetAbsOrigin();
 	
 	CSpriteTrail *pPhaseTrail = CSpriteTrail::SpriteTrailCreate( pszEffect, vecOrigin, true );

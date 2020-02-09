@@ -25,9 +25,13 @@ TF_Gamestats_LevelStats_t::TF_Gamestats_LevelStats_t()
 	m_Header.m_iTotalTime = 0;
 	m_Header.m_iBlueWins = 0;
 	m_Header.m_iRedWins = 0;
+	m_Header.m_iGreenWins = 0;
+	m_Header.m_iYellowWins = 0;
 	m_Header.m_iStalemates = 0;
 	m_Header.m_iBlueSuddenDeathWins = 0;
 	m_Header.m_iRedSuddenDeathWins = 0;
+	m_Header.m_iGreenSuddenDeathWins = 0;
+	m_Header.m_iYellowSuddenDeathWins = 0;
 	Q_memset( m_aClassStats, 0, sizeof( m_aClassStats ) );
 	Q_memset( m_aWeaponStats, 0, sizeof( m_aWeaponStats ) );
 	Q_memset( m_iPeakPlayerCount, 0, sizeof( m_iPeakPlayerCount ) );

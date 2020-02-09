@@ -191,9 +191,13 @@ public:
 		int				m_iTotalTime;								// total # of seconds of all rounds
 		int				m_iBlueWins;								// # of blue team wins
 		int				m_iRedWins;									// # of red team wins
+		int				m_iGreenWins;								// # of green team wins
+		int				m_iYellowWins;								// # of yellow team wins
 		int				m_iStalemates;								// # of stalemates
 		int				m_iBlueSuddenDeathWins;						// # of blue team wins during sudden death
 		int				m_iRedSuddenDeathWins;						// # of red team wins during sudden death
+		int				m_iGreenSuddenDeathWins;					// # of green team wins during sudden death
+		int				m_iYellowSuddenDeathWins;					// # of yellow team wins during sudden death
 
 		void Accumulate( LevelHeader_t &other )
 		{
@@ -201,9 +205,13 @@ public:
 			m_iTotalTime += other.m_iTotalTime;
 			m_iBlueWins += other.m_iBlueWins;
 			m_iRedWins += other.m_iRedWins;
+			m_iGreenWins += other.m_iGreenWins;
+			m_iYellowWins += other.m_iYellowWins;
 			m_iStalemates += other.m_iStalemates;
 			m_iBlueSuddenDeathWins += other.m_iBlueSuddenDeathWins;
 			m_iRedSuddenDeathWins += other.m_iRedSuddenDeathWins;
+			m_iGreenSuddenDeathWins += other.m_iGreenSuddenDeathWins;
+			m_iYellowSuddenDeathWins += other.m_iYellowSuddenDeathWins;
 		}
 	};
 

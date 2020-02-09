@@ -2107,8 +2107,27 @@ int CTFPlayer::GetAutoTeam( void )
 
 	CTFTeam *pBlue = TFTeamMgr()->GetTeam(TF_TEAM_BLUE);
 	CTFTeam *pRed = TFTeamMgr()->GetTeam(TF_TEAM_RED);
+	CTFTeam *pGreen = TFTeamMgr()->GetTeam(TF_TEAM_GREEN);
+	CTFTeam *pYellow = TFTeamMgr()->GetTeam(TF_TEAM_YELLOW);
 
-	if (pBlue && pRed)
+	if (pBlue && pRed && pGreen && pYellow)
+	{
+		int iHighestTeam = 0;
+
+		CTFTeam *teams[] = {pBlue, pRed, pGreen, pYellow};
+		//we have four possible numbers and we need to find the highest,
+		//4 * 4 = 12 possible checks for the highest player count team.
+		for(int i = 0; i < 4; i++)
+		{
+			for (int x = 0; x < 4; i++)
+			{
+				if(x == i)
+					continue;
+				iHighestTeam = (teams[i]->GetNumPlayers() > teams[x]->GetNumPlayers()) ? teams[i]->GetNumPlayers() > teams[iHighestTeam]->GetNumPlayers() ? i : iHighestTeam : iHighestTeam;
+			}
+		}
+	}
+	else if (pBlue && pRed)
 	{
 		if (pBlue->GetNumPlayers() < pRed->GetNumPlayers())
 		{
@@ -2238,6 +2257,14 @@ void CTFPlayer::HandleCommand_JoinTeam( const char *pTeamName )
 				break;
 
 			case TF_TEAM_BLUE:
+				ShowViewPortPanel( PANEL_CLASS_BLUE );
+				break;
+
+			case TF_TEAM_GREEN:
+				ShowViewPortPanel( PANEL_CLASS_BLUE );
+				break;
+
+			case TF_TEAM_YELLOW:
 				ShowViewPortPanel( PANEL_CLASS_BLUE );
 				break;
 		}
@@ -2747,6 +2774,14 @@ bool CTFPlayer::ClientCommand( const CCommand &args )
 				ShowViewPortPanel( PANEL_CLASS_BLUE, true );
 				break;
 
+			case TF_TEAM_GREEN:
+				ShowViewPortPanel( PANEL_CLASS_BLUE, true );
+				break;
+
+			case TF_TEAM_YELLOW:
+				ShowViewPortPanel( PANEL_CLASS_BLUE, true );
+				break;
+
 			default:
 				break;
 			}
@@ -2828,7 +2863,8 @@ bool CTFPlayer::ClientCommand( const CCommand &args )
 				
 				// intercepting the team value and reassigning what gets passed into Disguise()
 				// because the team numbers in the client menu don't match the #define values for the teams
-				m_Shared.Disguise((nTeam == 1) ? TF_TEAM_BLUE : TF_TEAM_RED, nClass);
+				
+				m_Shared.Disguise((nTeam > 2) ? (nTeam == 4) ? TF_TEAM_YELLOW : TF_TEAM_GREEN : (nTeam == 2) ? TF_TEAM_BLUE : TF_TEAM_RED, nClass);
 			}
 		}
 		return true;
@@ -2859,8 +2895,13 @@ bool CTFPlayer::ClientCommand( const CCommand &args )
 				do
 				{
 					nClass = random->RandomInt( TF_FIRST_NORMAL_CLASS, TF_CLASS_COUNT );
+					int temp = GetTeamNumber();
 
-					GetTeamNumber() == TF_TEAM_BLUE ? nTeam = TF_TEAM_RED : nTeam = TF_TEAM_BLUE;
+					temp > TF_TEAM_BLUE ?
+					  	temp == TF_TEAM_GREEN ? 
+					  		nTeam == TF_TEAM_GREEN : nTeam = TF_TEAM_YELLOW :
+						temp == TF_TEAM_BLUE ?
+					 		nTeam = TF_TEAM_BLUE : nTeam = TF_TEAM_BLUE;
 
 				} while( nClass == TF_CLASS_SCOUT || nClass == TF_CLASS_SPY || nTeam == GetTeamNumber() );
 			}
@@ -4151,15 +4192,23 @@ bool CTFPlayer::ShouldCollide( int collisionGroup, int contentsMask ) const
 	{
 		switch( GetTeamNumber() )
 		{
-		case TF_TEAM_RED:
-			if ( !( contentsMask & CONTENTS_REDTEAM ) )
-				return false;
-			break;
+			case TF_TEAM_RED:
+				if ( !( contentsMask & CONTENTS_REDTEAM ) )
+					return false;
+				break;
 
-		case TF_TEAM_BLUE:
-			if ( !( contentsMask & CONTENTS_BLUETEAM ) )
-				return false;
-			break;
+			case TF_TEAM_BLUE:
+				if ( !( contentsMask & CONTENTS_BLUETEAM ) )
+					return false;
+				break;
+			case TF_TEAM_GREEN:
+				if ( !(contentsMask & CONTENTS_GREENTEAM) )
+					return false;
+				break;
+			case TF_TEAM_YELLOW:
+				if ( !(contentsMask & CONTENTS_YELLOWTEAM) )
+					return false;
+				break;
 		}
 	}
 	return BaseClass::ShouldCollide( collisionGroup, contentsMask );
@@ -5244,6 +5293,12 @@ void CTFPlayer::DropAmmoPack( bool bLunchbox/* = false*/ )
 			case TF_TEAM_BLUE:
 				pAmmoPack->m_nSkin = 1;
 				break;
+			case TF_TEAM_GREEN:
+				pAmmoPack->m_nSkin = 1;
+				break;
+			case TF_TEAM_YELLOW:
+				pAmmoPack->m_nSkin = 1;
+				break;
 		}
 
 		// Give the ammo pack some health, so that trains can destroy it.
@@ -5319,12 +5374,18 @@ void CTFPlayer::DropFakeWeapon( CTFWeaponBase *pWeapon )
 
 		switch ( GetTeamNumber() )
 		{
-		case TF_TEAM_RED:
-			pAmmoPack->m_nSkin = 0;
-			break;
-		case TF_TEAM_BLUE:
-			pAmmoPack->m_nSkin = 1;
-			break;
+			case TF_TEAM_RED:
+				pAmmoPack->m_nSkin = 0;
+				break;
+			case TF_TEAM_BLUE:
+				pAmmoPack->m_nSkin = 1;
+				break;
+			case TF_TEAM_GREEN:
+				pAmmoPack->m_nSkin = 1;
+				break;
+			case TF_TEAM_YELLOW:
+				pAmmoPack->m_nSkin = 1;
+				break;
 		}
 
 		// Give the ammo pack some health, so that trains can destroy it.
@@ -6669,13 +6730,22 @@ CTFTeam *CTFPlayer::GetTFTeam( void )
 CTFTeam *CTFPlayer::GetOpposingTFTeam( void )
 {
 	int iTeam = GetTeamNumber();
-	if ( iTeam == TF_TEAM_RED )
+
+	switch(iTeam)
 	{
-		return TFTeamMgr()->GetTeam( TF_TEAM_BLUE );
-	}
-	else
-	{
-		return TFTeamMgr()->GetTeam( TF_TEAM_RED );
+		case TF_TEAM_RED:
+			return TFTeamMgr()->GetTeam( TF_TEAM_BLUE );
+
+		case TF_TEAM_BLUE:
+			return TFTeamMgr()->GetTeam( TF_TEAM_RED );
+
+		case TF_TEAM_GREEN:
+			return TFTeamMgr()->GetTeam( TF_TEAM_YELLOW );
+
+		case TF_TEAM_YELLOW:
+			return TFTeamMgr()->GetTeam( TF_TEAM_GREEN );
+		default:
+			return TFTeamMgr()->GetTeam( TEAM_SPECTATOR );
 	}
 }
 
@@ -8148,7 +8218,26 @@ bool CTFPlayer::SpeakConceptIfAllowed( int iConcept, const char *modifiers, char
 	{
 		CSingleUserRecipientFilter filter(this);
 
-		int iEnemyTeam = ( GetTeamNumber() == TF_TEAM_RED ) ? TF_TEAM_BLUE : TF_TEAM_RED;
+		int iEnemyTeam;
+
+		switch(GetTeamNumber())
+		{
+			case TF_TEAM_BLUE:
+				iEnemyTeam = TF_TEAM_RED;
+				break;
+
+			case TF_TEAM_RED:
+				iEnemyTeam = TF_TEAM_BLUE;
+				break;
+
+			case TF_TEAM_GREEN:
+				iEnemyTeam = TF_TEAM_YELLOW;
+				break;
+
+			case TF_TEAM_YELLOW:
+				iEnemyTeam = TF_TEAM_GREEN;
+				break;
+		}
 
 		// test, enemies and myself
 		CTeamRecipientFilter disguisedFilter( iEnemyTeam );

@@ -1,4 +1,4 @@
-//====== Copyright © 1996-2005, Valve Corporation, All rights reserved. =======
+//====== Copyright ï¿½ 1996-2005, Valve Corporation, All rights reserved. =======
 //
 // Purpose: 
 //
@@ -405,7 +405,7 @@ class CAchievementTFWin2FortNoEnemyCaps : public CBaseAchievement
 				if ( event->GetInt( "team" ) == GetLocalPlayerTeam() )
 				{
 					// did the enemy team get any flag captures?
-					C_TFTeam *pEnemyTeam = GetGlobalTFTeam( TF_TEAM_BLUE + TF_TEAM_RED - GetLocalPlayerTeam() );
+					C_TFTeam *pEnemyTeam = GetGlobalTFTeam( TF_TEAM_BLUE + TF_TEAM_RED + TF_TEAM_GREEN + TF_TEAM_YELLOW - GetLocalPlayerTeam() );
 					if ( 0 == pEnemyTeam->GetFlagCaptures() )
 					{										
 						IncrementCount();
