@@ -1,4 +1,4 @@
-//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//========= Copyright ï¿½ 1996-2005, Valve Corporation, All rights reserved. ============//
 //
 // Purpose: Game-specific impact effect hooks
 //
@@ -55,6 +55,12 @@ void TF_ThrowCigaretteCallback( const CEffectData &data )
 			pTemp->m_nSkin = 0;
 			break;
 		case TF_TEAM_BLUE:
+			pTemp->m_nSkin = 1;
+			break;
+		case TF_TEAM_GREEN:
+			pTemp->m_nSkin = 1;
+			break;
+		case TF_TEAM_YELLOW:
 			pTemp->m_nSkin = 1;
 			break;
 	}

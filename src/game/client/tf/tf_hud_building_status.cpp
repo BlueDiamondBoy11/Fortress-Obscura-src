@@ -1,4 +1,4 @@
-//========= Copyright © 1996-2002, Valve LLC, All rights reserved. ============
+//========= Copyright ï¿½ 1996-2002, Valve LLC, All rights reserved. ============
 //
 // Purpose: HUD Target ID element
 //
@@ -282,6 +282,12 @@ const char *CBuildingStatusItem::GetBackgroundImage( void )
 		pResult = "obj_status_background_red";
 		break;
 	case TF_TEAM_BLUE:
+		pResult = "obj_status_background_blue";
+		break;
+	case TF_TEAM_GREEN:
+		pResult = "obj_status_background_blue";
+		break;
+	case TF_TEAM_YELLOW:
 		pResult = "obj_status_background_blue";
 		break;
 	default:
@@ -743,6 +749,12 @@ const char *CBuildingStatusItem_SentryGun::GetBackgroundImage( void )
 		pResult = "obj_status_background_tall_red";
 		break;
 	case TF_TEAM_BLUE:
+		pResult = "obj_status_background_tall_blue";
+		break;
+	case TF_TEAM_GREEN:
+		pResult = "obj_status_background_tall_blue";
+		break;
+	case TF_TEAM_YELLOW:
 		pResult = "obj_status_background_tall_blue";
 		break;
 	default:

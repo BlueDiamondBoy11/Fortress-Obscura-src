@@ -19,6 +19,8 @@ const char *g_aTeamNames[TF_TEAM_COUNT] =
 	"Spectator",
 	"Red",
 	"Blue",
+	"Green",
+	"Yellow",
 };
 
 const char *g_aTeamNamesShort[TF_TEAM_COUNT] =
@@ -27,6 +29,8 @@ const char *g_aTeamNamesShort[TF_TEAM_COUNT] =
 	"red", // Spectator
 	"red",
 	"blu",
+	"grn",
+	"ylw",
 };
 
 const char *g_aTeamParticleNames[TF_TEAM_COUNT] =
@@ -35,6 +39,8 @@ const char *g_aTeamParticleNames[TF_TEAM_COUNT] =
 	"red",
 	"red",
 	"blue",
+	"green",
+	"yellow",
 };
 
 // Putting a dummy boolean for the old dm shit for now
@@ -67,6 +73,8 @@ color32 g_aTeamColors[TF_TEAM_COUNT] =
 	{ 0, 0, 0, 0 }, // Spectator
 	{ 255, 0, 0, 0 }, // Red
 	{ 0, 0, 255, 0 }, // Blue
+	{ 0, 255, 0, 0 }, // Green
+	{ 255, 255, 0, 0 }, // Yellow
 };
 
 bool IsGameTeam( int iTeam )
@@ -124,7 +132,7 @@ const char *g_aPlayerClassEmblems[] =
 	"../hud/leaderboard_class_pyro",
 	"../hud/leaderboard_class_spy",
 	"../hud/leaderboard_class_engineer",
-	"../hud/leaderboard_class_engineer",
+	"../hud/leaderboard_class_engineer", //Squire
 };
 
 const char *g_aPlayerClassEmblemsDead[] =
@@ -138,7 +146,7 @@ const char *g_aPlayerClassEmblemsDead[] =
 	"../hud/leaderboard_class_pyro_d",
 	"../hud/leaderboard_class_spy_d",
 	"../hud/leaderboard_class_engineer_d",
-	"../hud/leaderboard_class_engineer_d",
+	"../hud/leaderboard_class_engineer_d", //Squire
 };
 
 const char *g_aPlayerClassNames_NonLocalized[] =
@@ -337,7 +345,7 @@ static pszWpnEntTranslationListEntry pszWpnEntTranslationList[] =
 	"tf_weapon_revolver_secondary",	// Pyro
 	"tf_weapon_revolver",			// Spy
 	"tf_weapon_revolver_secondary",	// Engineer
-	"tf_weapon_revolver_secondary",	// Squire
+	"tf_weapon_revolver_secondary", // Squire
 };
 
 //-----------------------------------------------------------------------------

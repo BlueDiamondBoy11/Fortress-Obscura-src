@@ -426,6 +426,15 @@ void CBaseObject::MakeMiniBuilding( void )
 		m_nSkin = 3;
 		break;
 
+	case TF_TEAM_GREEN:
+		m_nSkin = 3;
+		break;
+
+	case TF_TEAM_YELLOW:
+		m_nSkin = 3;
+		break;
+
+
 	default:
 		m_nSkin = 2;
 		break;

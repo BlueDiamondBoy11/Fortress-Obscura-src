@@ -1,4 +1,4 @@
-//========= Copyright © 1996-2002, Valve LLC, All rights reserved. ============
+//========= Copyright ï¿½ 1996-2002, Valve LLC, All rights reserved. ============
 //
 // Purpose: 
 //
@@ -39,7 +39,7 @@ const char* g_pszTipsClassImages[] =
 	"class_portraits/heavy",
 	"class_portraits/pyro",
 	"class_portraits/spy",
-	"class_portraits/engineer",
+	"class_portraits/engineer", //squire
 };
 
 CTFStatsSummaryPanel *g_pTFStatsSummaryPanel = NULL;

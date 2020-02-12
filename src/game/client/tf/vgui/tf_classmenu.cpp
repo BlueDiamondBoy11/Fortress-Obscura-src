@@ -1,4 +1,4 @@
-//========= Copyright © 1996-2006, Valve Corporation, All rights reserved. ============//
+//========= Copyright ï¿½ 1996-2006, Valve Corporation, All rights reserved. ============//
 //
 // Purpose: 
 //
@@ -577,6 +577,7 @@ static int g_sClassDefines[] = {
 	TF_CLASS_MEDIC,
 	TF_CLASS_SNIPER,
 	TF_CLASS_SPY,
+	TF_CLASS_SQUIRE,
 	0,
 };
 
